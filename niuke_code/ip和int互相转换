@@ -1,0 +1,58 @@
+'''
+输入描述:
+输入 
+1 输入IP地址
+2 输入10进制型的IP地址
+
+输出描述:
+输出
+1 输出转换成10进制的IP地址
+2 输出转换后的IP地址
+'''
+import sys
+
+def zhuanint(ip):
+    # str = ip
+    ip4 = ip.split(".")
+    ip4bin = ""
+    for ele in ip4:
+        tmp = int(ele)
+        bintmp = bin(tmp)
+        bintmp= bintmp[2:]
+        if len(bintmp) < 8:
+            tmp0 = "0"*(8-len(bintmp))
+            bintmp = tmp0 + bintmp
+        ip4bin += bintmp
+    return int(ip4bin,2)
+
+
+def zhuanip(ipint):
+    # ipint = str
+    tmpint = int(ipint)
+    tmpbin = bin(tmpint)
+    tmpbin = tmpbin[2:]
+    if len(tmpbin) < 32:
+        tmp0 = "0" * (32 - len(tmpbin))
+        tmpbin = tmp0 + tmpbin
+    rs = ""
+    for i in range(4):
+        tmp = tmpbin[i*8:(i+1)*8]
+        tmp1 = int(tmp,2)
+        rs += str(tmp1)+"."
+    return rs[:-1]
+
+
+def solve():
+    ip = sys.stdin.readline().strip()
+    ipint = sys.stdin.readline().strip()
+    rs = zhuanint(ip)
+    print(rs)
+    rs = zhuanip(ipint)
+    print(rs)
+
+while True:
+    try:
+        while True:
+            solve()
+    except:
+        break
