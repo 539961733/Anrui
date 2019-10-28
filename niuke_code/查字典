@@ -1,0 +1,46 @@
+'''
+输入描述:
+先输入字典中单词的个数，再输入n个单词作为字典单词。
+输入一个单词，查找其在字典中兄弟单词的个数
+再输入数字n
+
+输出描述:
+根据输入，输出查找到的兄弟单词的个数
+'''
+import sys
+def solve():
+    data = sys.stdin.readline().strip().split(" ")
+    n = int(data[0])
+    dic = data[1:n+1]
+    tgt = data[-2]
+    m = int(data[-1])
+    dic = set(dic)
+    dic = list(dic)
+    dic.sort()
+    y = []
+    for ele in dic:
+        if len(ele) == len(tgt):
+            ele1 = sorted(ele)
+            tgt1 = sorted(tgt)
+            if ele1 == tgt1:
+                y.append(ele)
+    print(y)
+    if tgt in y:
+        print(len(y)-1)
+    else:
+        print(len(y))
+    for ele in y:
+        if ele != tgt:
+            m -= 1
+        if m == 0:
+            print(ele)
+            break
+
+
+
+while True:
+    try:
+        while True:
+            solve()
+    except:
+        break
