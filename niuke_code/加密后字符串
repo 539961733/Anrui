@@ -27,6 +27,8 @@ def mimaben(key):
 
 def solve():
     key = sys.stdin.readline().strip()
+    if key == "":
+            break
     ben = mimaben(key)
     information = sys.stdin.readline().strip()
     code = ""
