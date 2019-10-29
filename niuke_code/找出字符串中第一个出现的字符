@@ -1,0 +1,27 @@
+'''
+题目描述
+找出字符串中第一个只出现一次的字符
+
+输入描述:
+输入一个非空字符串
+
+输出描述:
+输出第一个只出现一次的字符，如果不存在输出-1
+'''
+def solve():
+    data = sys.stdin.readline().strip()
+    chongfu = []
+    dandu = []
+    for ele in data:
+        if ele not in chongfu:
+            if ele in dandu:
+                dandu.remove(ele)
+                chongfu.append(ele)
+            else:
+                dandu.append(ele)
+    if len(dandu) == 0:
+        print(-1)
+    else:
+        print(dandu[0])
+
+solve()
